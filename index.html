@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstudaFácil — Exercícios do Ensino Fundamental</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg: #FFFBF0;
+  --paper: #FFFFFF;
+  --blue: #1B4FD8;
+  --blue-dark: #1339A8;
+  --blue-light: #EEF3FF;
+  --coral: #FF5C35;
+  --coral-light: #FFF0EC;
+  --yellow: #FFCC00;
+  --yellow-light: #FFFBE0;
+  --green: #00C08B;
+  --green-light: #E0FBF4;
+  --purple: #8B3FD8;
+  --purple-light: #F3EEFF;
+  --red: #E53935;
+  --red-light: #FDECEA;
+  --gray: #6B7280;
+  --gray-light: #F3F4F6;
+  --text: #1A1A2E;
+  --text-soft: #4A4A6A;
+  --shadow: 0 4px 0 rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 0 rgba(0,0,0,0.12);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(27,79,216,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(255,92,53,0.06) 0%, transparent 50%);
+}
+
+/* ===== UTILITY ===== */
+.hidden { display: none !important; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+
+/* ===== SCREEN SYSTEM ===== */
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 48px;
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HEADER / LOGO ===== */
+.logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(28px, 6vw, 40px);
+  color: var(--blue);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo span { color: var(--coral); }
+.logo .dot { color: var(--yellow); }
+.logo-icon { font-size: 1.1em; }
+
+.site-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 24px;
+}
+
+/* ===== PILL / BADGES ===== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.pill-blue { background: var(--blue-light); color: var(--blue); }
+.pill-coral { background: var(--coral-light); color: var(--coral); }
+.pill-green { background: var(--green-light); color: var(--green); }
+.pill-yellow { background: var(--yellow-light); color: #9A7800; }
+.pill-purple { background: var(--purple-light); color: var(--purple); }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0,0,0,0.12) !important; }
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 5px 0 var(--blue-dark);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--blue-dark); }
+
+.btn-coral {
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 5px 0 #C83A18;
+}
+.btn-coral:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #C83A18; }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: #5A4000;
+  box-shadow: 0 5px 0 #C89900;
+}
+.btn-yellow:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #C89900; }
+
+.btn-green {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 5px 0 #008F67;
+}
+.btn-green:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #008F67; }
+
+.btn-ghost {
+  background: var(--gray-light);
+  color: var(--text-soft);
+  box-shadow: 0 4px 0 #D1D5DB;
+}
+.btn-ghost:hover { transform: translateY(-1px); box-shadow: 0 5px 0 #D1D5DB; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 2.5px solid var(--blue);
+  box-shadow: none;
+}
+.btn-outline:hover { background: var(--blue-light); }
+.btn-lg { padding: 18px 36px; font-size: 18px; border-radius: 18px; }
+.btn-sm { padding: 9px 18px; font-size: 14px; border-radius: 10px; }
+.btn-full { width: 100%; }
+
+/* ===== CARD ===== */
+.card {
+  background: var(--paper);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.07), 0 8px 24px rgba(0,0,0,0.07);
+  padding: 28px;
+}
+
+/* ===== SCORE BAR ===== */
+.score-bar-wrap {
+  background: var(--blue);
+  border-radius: 14px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+}
+.score-badge {
+  background: var(--yellow);
+  color: #5A4000;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: #E5E7EB;
+  border-radius: 100px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), #5B8EFF);
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== HOME SCREEN ===== */
+#screen-home {
+  justify-content: center;
+  gap: 0;
+}
+
+.hero {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 40px;
+}
+
+.hero-emoji {
+  font-size: 72px;
+  display: block;
+  margin-bottom: 12px;
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(38px, 8vw, 64px);
+  line-height: 1.05;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.hero h1 em {
+  color: var(--coral);
+  font-style: normal;
+}
+.hero p {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: var(--text-soft);
+  line-height: 1.6;
+  margin: 16px auto 32px;
+  max-width: 520px;
+}
+
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto 36px;
+}
+.stat-box {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 10px;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.08);
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 28px;
+  color: var(--blue);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== SUBJECT SELECTION SCREEN ===== */
+#screen-select { gap: 0; }
+
+.screen-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(26px, 5vw, 38px);
+  color: var(--blue);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.screen-subtitle {
+  color: var(--text-soft);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+.subject-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.09);
+  border: 3px solid transparent;
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+.subject-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  border-radius: 18px 18px 0 0;
+}
+.subject-card.cat-portugues::before { background: var(--blue); }
+.subject-card.cat-matematica::before { background: var(--coral); }
+.subject-card.cat-tecnologia::before { background: var(--green); }
+.subject-card.cat-geral::before { background: var(--purple); }
+
+.subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 rgba(0,0,0,0.09);
+}
+.subject-card.selected {
+  border-color: var(--blue);
+  background: var(--blue-light);
+  transform: translateY(-2px);
+}
+.subject-card.selected.cat-portugues { border-color: var(--blue); background: var(--blue-light); }
+.subject-card.selected.cat-matematica { border-color: var(--coral); background: var(--coral-light); }
+.subject-card.selected.cat-tecnologia { border-color: var(--green); background: var(--green-light); }
+.subject-card.selected.cat-geral { border-color: var(--purple); background: var(--purple-light); }
+
+.subject-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+.subject-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.subject-count {
+  font-size: 13px;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+.subject-check {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+}
+.subject-card.selected .subject-check { display: flex; }
+
+.mode-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+.mode-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.08);
+  border: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.18s ease;
+  font-weight: 700;
+  font-size: 15px;
+}
+.mode-card:hover { transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,0.08); }
+.mode-card.selected { border-color: var(--yellow); background: var(--yellow-light); }
+.mode-icon { font-size: 28px; }
+
+.action-bar {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== QUESTION SCREEN ===== */
+#screen-question {
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.question-header {
+  width: 100%;
+  max-width: 760px;
+}
+.q-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.q-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 15px;
+  color: var(--text-soft);
+}
+
+.question-card {
+  background: white;
+  border-radius: 22px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 760px;
+  position: relative;
+}
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, var(--blue), #5B8EFF);
+}
+
+.question-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+.question-text {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.question-context {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  background: var(--gray-light);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--blue);
+  font-style: italic;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 2.5px solid #E5E7EB;
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  transition: all 0.15s;
+  text-align: left;
+  width: 100%;
+}
+.option-btn:hover:not(:disabled) {
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+.option-letter {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--gray-light);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 15px;
+  color: var(--text-soft);
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.option-btn:hover:not(:disabled) .option-letter {
+  background: var(--blue);
+  color: white;
+}
+.option-btn.selected {
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+.option-btn.selected .option-letter {
+  background: var(--blue);
+  color: white;
+}
+.option-btn.correct {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+.option-btn.correct .option-letter {
+  background: var(--green);
+  color: white;
+}
+.option-btn.wrong {
+  border-color: var(--red);
+  background: var(--red-light);
+}
+.option-btn.wrong .option-letter {
+  background: var(--red);
+  color: white;
+}
+
+/* Short answer input */
+.short-answer-wrap {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.short-answer-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 18px;
+  border: 2.5px solid #E5E7EB;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.short-answer-input:focus { border-color: var(--blue); }
+.short-answer-input.correct { border-color: var(--green); background: var(--green-light); }
+.short-answer-input.wrong { border-color: var(--red); background: var(--red-light); }
+
+/* True/False */
+.tf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.tf-btn {
+  padding: 20px;
+  border: 2.5px solid #E5E7EB;
+  border-radius: 16px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: var(--text);
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.tf-btn .tf-label {
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+.tf-btn:hover:not(:disabled) { border-color: var(--blue); background: var(--blue-light); }
+.tf-btn.selected { border-color: var(--blue); background: var(--blue-light); }
+.tf-btn.correct { border-color: var(--green); background: var(--green-light); }
+.tf-btn.wrong { border-color: var(--red); background: var(--red-light); }
+
+/* Feedback box */
+.feedback-box {
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feedback-box.correct { background: var(--green-light); border: 2px solid var(--green); }
+.feedback-box.wrong { background: var(--red-light); border: 2px solid var(--red); }
+.feedback-icon { font-size: 28px; flex-shrink: 0; }
+.feedback-content strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.feedback-content p {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.question-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== RESULTS SCREEN ===== */
+#screen-results { gap: 20px; }
+
+.results-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.07);
+  width: 100%;
+  max-width: 620px;
+  overflow: hidden;
+}
+.results-header {
+  background: linear-gradient(135deg, var(--blue), #3B6BFF);
+  padding: 36px 28px 32px;
+  text-align: center;
+  color: white;
+}
+.results-emoji {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 8px;
+  animation: celebrate 0.6s ease;
+}
+@keyframes celebrate {
+  0% { transform: scale(0.5) rotate(-10deg); }
+  60% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.results-header h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+.results-score-big {
+  font-family: 'Fredoka One', cursive;
+  font-size: 56px;
+  line-height: 1;
+  margin: 10px 0 4px;
+}
+.results-pct { font-size: 16px; opacity: 0.85; font-weight: 700; }
+
+.results-body { padding: 28px; }
+.results-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.r-stat {
+  background: var(--gray-light);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.r-stat-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  color: var(--text);
+  line-height: 1;
+}
+.r-stat-label {
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.review-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.review-item.ok { background: var(--green-light); }
+.review-item.nok { background: var(--red-light); }
+.review-item-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.review-item-text { color: var(--text); line-height: 1.4; }
+
+.results-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ===== CHALLENGE MODE BANNER ===== */
+.challenge-banner {
+  background: linear-gradient(135deg, var(--coral), #FF8A65);
+  color: white;
+  border-radius: 16px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 760px;
+  font-weight: 700;
+}
+.challenge-banner .ch-icon { font-size: 28px; }
+.challenge-banner .ch-text { font-size: 15px; line-height: 1.3; }
+.challenge-banner .ch-count {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  margin-left: auto;
+  background: rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .screen { padding: 16px 12px 40px; }
+  .card, .question-card, .results-card { padding: 20px 16px; }
+  .mode-row { grid-template-columns: 1fr; }
+  .subjects-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .results-stats { grid-template-columns: 1fr 1fr 1fr; }
+  .action-bar { flex-direction: column; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .stats-row { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .tf-btn { padding: 16px; font-size: 18px; }
+}
+@media (max-width: 400px) {
+  .subjects-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================================================== -->
+<!-- SCREEN: HOME -->
+<!-- ===================================================== -->
+<div id="screen-home" class="screen">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      Estuda<span>Fácil</span><span class="dot">.</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <span class="hero-emoji">🎯</span>
+    <h1>Pratique, <em>aprenda</em>,<br>evolua!</h1>
+    <p>Exercícios do ensino fundamental em Português, Matemática, Tecnologia e mais — simples, rápidos e gratuitos.</p>
+
+    <div class="feature-pills">
+      <span class="pill pill-blue">📝 Banco de questões</span>
+      <span class="pill pill-coral">🔀 Modo misto</span>
+      <span class="pill pill-green">✅ Correção automática</span>
+      <span class="pill pill-yellow">🏆 Sistema de pontuação</span>
+      <span class="pill pill-purple">⚡ Modo Desafio</span>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">60+</div>
+        <div class="stat-label">Questões</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Matérias</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Níveis</div>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <button class="btn btn-primary btn-lg" onclick="goToSelect()">
+        🚀 Começar exercícios
+      </button>
+      <button class="btn btn-coral btn-lg" onclick="startChallenge()">
+        ⚡ Modo Desafio (10 questões)
+      </button>
+    </div>
+  </div>
+
+  <!-- Category preview cards -->
+  <div class="subjects-grid" style="max-width:820px; margin-top:0;">
+    <div class="subject-card cat-portugues" style="cursor:default;">
+      <span class="subject-icon">📖</span>
+      <div class="subject-name">Português</div>
+      <div class="subject-count">Gramática, interpretação, ortografia</div>
+    </div>
+    <div class="subject-card cat-matematica" style="cursor:default;">
+      <span class="subject-icon">🔢</span>
+      <div class="subject-name">Matemática</div>
+      <div class="subject-count">Operações, frações, porcentagem</div>
+    </div>
+    <div class="subject-card cat-tecnologia" style="cursor:default;">
+      <span class="subject-icon">💻</span>
+      <div class="subject-name">Tecnologia</div>
+      <div class="subject-count">Excel, informática, design</div>
+    </div>
+    <div class="subject-card cat-geral" style="cursor:default;">
+      <span class="subject-icon">🧩</span>
+      <div class="subject-name">Conhecimentos Gerais</div>
+      <div class="subject-count">Lógica, habilidades escolares</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- SCREEN: SELECT -->
+<!-- ===================================================== -->
+<div id="screen-select" class="screen hidden">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      Estuda<span>Fácil</span><span class="dot">.</span>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="goHome()">← Início</button>
+  </header>
+
+  <h1 class="screen-title">Escolha os assuntos</h1>
+  <p class="screen-subtitle">Selecione um ou mais assuntos para praticar</p>
+
+  <div class="subjects-grid" id="subjects-grid">
+    <!-- preenchido via JS -->
+  </div>
+
+  <h2 class="screen-title" style="font-size:22px; margin-bottom:8px;">Modo de jogo</h2>
+  <p class="screen-subtitle">Como você quer responder as questões?</p>
+
+  <div class="mode-row" style="max-width:900px;">
+    <div class="mode-card" id="mode-practice" onclick="selectMode('practice')">
+      <span class="mode-icon">📝</span>
+      <div>
+        <div style="font-weight:800; color:var(--text);">Modo Prática</div>
+        <div style="font-size:13px; color:var(--text-soft); margin-top:2px;">Questões sem limite de tempo</div>
+      </div>
+    </div>
+    <div class="mode-card" id="mode-challenge" onclick="selectMode('challenge')">
+      <span class="mode-icon">⚡</span>
+      <div>
+        <div style="font-weight:800; color:var(--text);">Modo Desafio</div>
+        <div style="font-size:13px; color:var(--text-soft); margin-top:2px;">10 questões seguidas, sem pausa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Difficulty -->
+  <h2 class="screen-title" style="font-size:22px; margin-bottom:8px;">Nível de dificuldade</h2>
+  <div class="mode-row" style="max-width:900px; grid-template-columns: repeat(3,1fr);">
+    <div class="mode-card" id="diff-basico" onclick="selectDiff('basico')">
+      <span class="mode-icon">🌱</span>
+      <div>
+        <div style="font-weight:800; color:var(--text);">Básico</div>
+        <div style="font-size:12px; color:var(--text-soft);">Conceitos essenciais</div>
+      </div>
+    </div>
+    <div class="mode-card" id="diff-facil" onclick="selectDiff('facil')">
+      <span class="mode-icon">⭐</span>
+      <div>
+        <div style="font-weight:800; color:var(--text);">Fácil</div>
+        <div style="font-size:12px; color:var(--text-soft);">Um pouco mais</div>
+      </div>
+    </div>
+    <div class="mode-card" id="diff-medio" onclick="selectDiff('medio')">
+      <span class="mode-icon">🔥</span>
+      <div>
+        <div style="font-weight:800; color:var(--text);">Médio</div>
+        <div style="font-size:12px; color:var(--text-soft);">Desafiador</div>
+      </div>
+    </div>
+  </div>
+  <div class="mode-card" id="diff-todos" style="max-width:900px; width:100%; margin-top:-6px;" onclick="selectDiff('todos')">
+    <span class="mode-icon">🎲</span>
+    <div>
+      <div style="font-weight:800; color:var(--text);">Todos os níveis</div>
+      <div style="font-size:13px; color:var(--text-soft);">Mistura de básico ao médio</div>
+    </div>
+  </div>
+
+  <div class="action-bar" style="margin-top:24px;">
+    <button class="btn btn-ghost" onclick="goHome()">← Voltar</button>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn btn-outline" onclick="selectAllSubjects()">Selecionar todas</button>
+      <button class="btn btn-primary btn-lg" onclick="startSession()" id="btn-start-session">
+        Iniciar sessão →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- SCREEN: QUESTION -->
+<!-- ===================================================== -->
+<div id="screen-question" class="screen hidden">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      Estuda<span>Fácil</span><span class="dot">.</span>
+    </div>
+    <div class="score-bar-wrap" id="score-bar">
+      <span>⭐ Pontos:</span>
+      <span class="score-badge" id="score-display">0</span>
+    </div>
+  </header>
+
+  <div id="challenge-banner" class="challenge-banner hidden">
+    <span class="ch-icon">⚡</span>
+    <div class="ch-text"><strong>Modo Desafio!</strong><br>Complete as 10 questões</div>
+    <span class="ch-count" id="challenge-count">1/10</span>
+  </div>
+
+  <div class="question-header">
+    <div class="q-meta">
+      <span class="q-num" id="q-num-label">Questão 1 de 10</span>
+      <div id="q-pill" class="pill pill-blue">Português</div>
+      <span id="diff-pill" class="pill pill-green">Básico</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="question-card" id="question-card">
+    <div class="question-category" id="q-category">📖 Português — Gramática</div>
+    <div id="q-context" class="question-context hidden"></div>
+    <div class="question-text" id="q-text">Carregando...</div>
+    <div id="q-options" class="options-list"></div>
+    <div id="q-feedback" class="hidden"></div>
+    <div class="question-actions">
+      <button class="btn btn-ghost" onclick="goToSelect()" id="btn-exit-q">⬅ Sair</button>
+      <button class="btn btn-primary" id="btn-answer" onclick="confirmAnswer()">Responder ✓</button>
+      <button class="btn btn-green hidden" id="btn-next" onclick="nextQuestion()">Próxima →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- SCREEN: RESULTS -->
+<!-- ===================================================== -->
+<div id="screen-results" class="screen hidden">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      Estuda<span>Fácil</span><span class="dot">.</span>
+    </div>
+  </header>
+
+  <div class="results-card">
+    <div class="results-header">
+      <span class="results-emoji" id="result-emoji">🎉</span>
+      <h2 id="result-title">Parabéns!</h2>
+      <div class="results-score-big" id="result-score">8/10</div>
+      <div class="results-pct" id="result-pct">80% de aproveitamento</div>
+    </div>
+    <div class="results-body">
+      <div class="results-stats">
+        <div class="r-stat">
+          <div class="r-stat-num" id="r-acertos">8</div>
+          <div class="r-stat-label">✅ Acertos</div>
+        </div>
+        <div class="r-stat">
+          <div class="r-stat-num" id="r-erros">2</div>
+          <div class="r-stat-label">❌ Erros</div>
+        </div>
+        <div class="r-stat">
+          <div class="r-stat-num" id="r-pontos">80</div>
+          <div class="r-stat-label">⭐ Pontos</div>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Fredoka One',cursive; font-size:18px; margin-bottom:12px; color:var(--text);">Revisão das questões</h3>
+      <div class="review-list" id="review-list"></div>
+
+      <div class="results-btns">
+        <button class="btn btn-primary btn-full" onclick="startChallenge()">⚡ Novo Desafio</button>
+        <button class="btn btn-ghost btn-full" style="margin-top:8px;" onclick="goToSelect()">📚 Praticar novamente</button>
+        <button class="btn btn-outline btn-full" style="margin-top:8px;" onclick="goHome()">🏠 Início</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
+<script>
+// ==================== BANCO DE QUESTÕES ====================
+const questionsDB = [
+
+  // ===== PORTUGUÊS — GRAMÁTICA =====
+  {
+    id: 1, category: "Português", subcategory: "Classes Gramaticais",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é a classe gramatical da palavra sublinhada na frase: \"O <u>rápido</u> atleta venceu a corrida\"?",
+    options: ["Substantivo", "Adjetivo", "Advérbio", "Verbo"],
+    correct: 1,
+    explanation: "\"Rápido\" é um adjetivo, pois qualifica o substantivo \"atleta\", indicando uma característica dele."
+  },
+  {
+    id: 2, category: "Português", subcategory: "Classes Gramaticais",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Identifique o VERBO na frase: \"Maria comprou flores bonitas para sua mãe.\"",
+    options: ["Maria", "comprou", "bonitas", "mãe"],
+    correct: 1,
+    explanation: "\"Comprou\" é um verbo, pois indica a ação realizada pelo sujeito (Maria). É o verbo 'comprar' no passado."
+  },
+  {
+    id: 3, category: "Português", subcategory: "Transitividade Verbal",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "facil", type: "multipla",
+    text: "Na frase \"Pedro deu um presente à sua irmã\", o verbo \"deu\" é:",
+    options: ["Intransitivo (não precisa de complemento)", "Transitivo direto (exige objeto direto)", "Transitivo indireto (exige objeto indireto)", "Transitivo direto e indireto (bivalente)"],
+    correct: 3,
+    explanation: "\"Dar\" é bitransitivo: precisa de objeto direto ('um presente') e objeto indireto ('à sua irmã'). Por isso é transitivo direto e indireto."
+  },
+  {
+    id: 4, category: "Português", subcategory: "Transitividade Verbal",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "facil", type: "verdadeiro_falso",
+    text: "O verbo 'chover' é classificado como verbo intransitivo, pois não precisa de complemento para ter sentido completo.",
+    correct: true,
+    explanation: "Correto! 'Chover' é verbo intransitivo — ele tem sentido completo por si só ('Choveu muito ontem') e não pede complemento."
+  },
+  {
+    id: 5, category: "Português", subcategory: "Ortografia",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Qual das alternativas está escrita CORRETAMENTE?",
+    options: ["Excessão", "Exceção", "Exeção", "Excesão"],
+    correct: 1,
+    explanation: "A forma correta é \"Exceção\" — com 'c' e cedilha (ç). Significa algo fora da regra geral."
+  },
+  {
+    id: 6, category: "Português", subcategory: "Ortografia",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Marque a frase com a ortografia CORRETA:",
+    options: ["Ele foi ao médico ontem.", "Ele foi ao médicu ontem.", "Ele foi ao médico, ontem.", "Ele foi ao medico ontem."],
+    correct: 0,
+    explanation: "\"Médico\" é escrito com acento agudo no 'é', pois é uma palavra proparoxítona (sílaba tônica é a antepenúltima: MÉ-di-co)."
+  },
+  {
+    id: 7, category: "Português", subcategory: "Interpretação de Texto",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    context: "\"A leitura é um hábito que transforma a vida das pessoas. Quem lê com frequência desenvolve melhor vocabulário, raciocínio e empatia. Não é à toa que os maiores líderes do mundo são leitores vorazes.\"",
+    text: "Qual é a ideia PRINCIPAL do texto acima?",
+    options: ["Líderes leem muito", "A leitura traz muitos benefícios para as pessoas", "Vocabulário é importante", "Empatia é uma habilidade rara"],
+    correct: 1,
+    explanation: "O texto defende que a leitura é transformadora e traz benefícios como melhor vocabulário, raciocínio e empatia. Essa é a ideia central."
+  },
+  {
+    id: 8, category: "Português", subcategory: "Interpretação de Texto",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "facil", type: "verdadeiro_falso",
+    context: "\"A água é essencial para a vida. O corpo humano é composto por cerca de 60% de água, e a desidratação pode causar sérios problemas de saúde.\"",
+    text: "De acordo com o texto, o corpo humano é composto por mais de 70% de água.",
+    correct: false,
+    explanation: "Falso! O texto afirma que o corpo humano é composto por CERCA DE 60% de água, não mais de 70%."
+  },
+  {
+    id: 9, category: "Português", subcategory: "Pontuação",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "medio", type: "multipla",
+    text: "Assinale a frase em que o uso da vírgula está CORRETO:",
+    options: ["O gato, pulou no telhado.", "Comprei maçãs, peras e bananas.", "João foi, ao mercado e voltou cedo.", "Lua, Sol e, estrelas brilhavam."],
+    correct: 1,
+    explanation: "\"Comprei maçãs, peras e bananas.\" — A vírgula está correta porque separa itens de uma lista, e o último item é ligado pelo “e” sem vírgula antes."
+  },
+  {
+    id: 10, category: "Português", subcategory: "Classes Gramaticais",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Qual das palavras abaixo é um SUBSTANTIVO?",
+    options: ["correu", "azul", "escola", "rapidamente"],
+    correct: 2,
+    explanation: "\"Escola\" é um substantivo, pois nomeia um lugar. Substantivos são palavras que dão nome a seres, objetos, lugares, sentimentos etc."
+  },
+
+  // ===== MATEMÁTICA =====
+  {
+    id: 11, category: "Matemática", subcategory: "Operações Básicas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "multipla",
+    text: "Quanto é 347 + 289?",
+    options: ["626", "636", "646", "636"],
+    correct: 1,
+    explanation: "347 + 289 = 636. Somando: 7+9=16 (escreve 6, vai 1); 4+8+1=13 (escreve 3, vai 1); 3+2+1=6. Resultado: 636."
+  },
+  {
+    id: 12, category: "Matemática", subcategory: "Operações Básicas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "multipla",
+    text: "Quanto é 500 − 237?",
+    options: ["263", "273", "253", "267"],
+    correct: 0,
+    explanation: "500 − 237 = 263. Fazendo a subtração com empréstimo: 10−7=3; 9−3=6; 4−2=2. Resultado: 263."
+  },
+  {
+    id: 13, category: "Matemática", subcategory: "Multiplicação",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é o resultado de 7 × 8?",
+    options: ["54", "56", "58", "48"],
+    correct: 1,
+    explanation: "7 × 8 = 56. Uma forma de lembrar: 7 × 8 = 7 × (4 × 2) = 28 × 2 = 56."
+  },
+  {
+    id: 14, category: "Matemática", subcategory: "Divisão",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "multipla",
+    text: "Quanto é 144 ÷ 12?",
+    options: ["10", "11", "12", "13"],
+    correct: 2,
+    explanation: "144 ÷ 12 = 12. Pois 12 × 12 = 144. Você pode verificar: 12 × 10 = 120, 12 × 2 = 24, 120 + 24 = 144. ✓"
+  },
+  {
+    id: 15, category: "Matemática", subcategory: "Frações",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "multipla",
+    text: "Qual é o resultado de 1/2 + 1/4?",
+    options: ["2/6", "3/4", "2/4", "1/4"],
+    correct: 1,
+    explanation: "Para somar 1/2 + 1/4, igualamos os denominadores: 1/2 = 2/4. Então 2/4 + 1/4 = 3/4."
+  },
+  {
+    id: 16, category: "Matemática", subcategory: "Frações",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "verdadeiro_falso",
+    text: "A fração 3/6 é equivalente à fração 1/2.",
+    correct: true,
+    explanation: "Verdadeiro! 3/6 simplificado = 3÷3 / 6÷3 = 1/2. Frações equivalentes representam a mesma parte do todo."
+  },
+  {
+    id: 17, category: "Matemática", subcategory: "Porcentagem",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "multipla",
+    text: "Quanto é 20% de 150?",
+    options: ["20", "25", "30", "35"],
+    correct: 2,
+    explanation: "20% de 150 = 150 × 20/100 = 150 × 0,2 = 30. Outra forma: 10% de 150 = 15, então 20% = 15 × 2 = 30."
+  },
+  {
+    id: 18, category: "Matemática", subcategory: "Porcentagem",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "medio", type: "multipla",
+    text: "Um produto custa R$ 80,00 e teve desconto de 15%. Qual é o preço final?",
+    options: ["R$ 64,00", "R$ 68,00", "R$ 72,00", "R$ 65,00"],
+    correct: 1,
+    explanation: "15% de R$ 80 = R$ 12. Preço final = R$ 80 − R$ 12 = R$ 68. (10% = R$8, 5% = R$4, total desconto = R$12)"
+  },
+  {
+    id: 19, category: "Matemática", subcategory: "Problemas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "multipla",
+    text: "Ana tem 24 balas e quer dividir igualmente entre 6 amigos. Quantas balas cada amigo receberá?",
+    options: ["3", "4", "5", "6"],
+    correct: 1,
+    explanation: "24 ÷ 6 = 4. Cada amigo receberá 4 balas. Verificando: 6 × 4 = 24. ✓"
+  },
+  {
+    id: 20, category: "Matemática", subcategory: "Problemas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "multipla",
+    text: "Uma loja vende refrigerante a R$ 3,50 a unidade. João comprou 4 refrigerantes. Quanto pagou no total?",
+    options: ["R$ 12,00", "R$ 13,00", "R$ 14,00", "R$ 15,00"],
+    correct: 2,
+    explanation: "R$ 3,50 × 4 = R$ 14,00. João pagou R$ 14,00 no total."
+  },
+  {
+    id: 21, category: "Matemática", subcategory: "Geometria",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "multipla",
+    text: "Um quadrado tem lado medindo 5 cm. Qual é a área desse quadrado?",
+    options: ["10 cm²", "20 cm²", "25 cm²", "15 cm²"],
+    correct: 2,
+    explanation: "Área do quadrado = lado × lado = 5 × 5 = 25 cm². O perímetro seria 4 × 5 = 20 cm."
+  },
+  {
+    id: 22, category: "Matemática", subcategory: "Números",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "verdadeiro_falso",
+    text: "O número 7 é um número primo.",
+    correct: true,
+    explanation: "Verdadeiro! 7 é primo porque só é divisível por 1 e por ele mesmo. Os primos até 20 são: 2, 3, 5, 7, 11, 13, 17, 19."
+  },
+  {
+    id: 23, category: "Matemática", subcategory: "Operações Básicas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "medio", type: "multipla",
+    text: "Qual é o resultado de: 3² + 4²?",
+    options: ["14", "25", "49", "12"],
+    correct: 1,
+    explanation: "3² = 9 e 4² = 16. Então 9 + 16 = 25. Curiosidade: 3, 4 e 5 formam uma terna pitagórica (5² = 25)!"
+  },
+
+  // ===== TECNOLOGIA / INFORMÁTICA =====
+  {
+    id: 24, category: "Tecnologia", subcategory: "Informática Básica",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é a função principal de um sistema operacional?",
+    options: ["Criar documentos de texto", "Gerenciar o hardware e software do computador", "Navegar na internet", "Editar fotos e vídeos"],
+    correct: 1,
+    explanation: "O sistema operacional (como Windows, macOS ou Linux) gerencia os recursos do computador e serve de base para todos os outros programas."
+  },
+  {
+    id: 25, category: "Tecnologia", subcategory: "Informática Básica",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "verdadeiro_falso",
+    text: "Um arquivo com extensão .pdf é um documento que pode ser facilmente editado em qualquer computador sem programas especiais.",
+    correct: false,
+    explanation: "Falso! Arquivos .pdf (Portable Document Format) são criados para visualização, não edição fácil. Para editar, geralmente são necessários programas específicos como Adobe Acrobat."
+  },
+  {
+    id: 26, category: "Tecnologia", subcategory: "Excel Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "No Microsoft Excel, como se escreve uma fórmula para somar os valores das células A1 e B1?",
+    options: ["SOMA(A1+B1)", "=A1+B1", "SUM(A1,B1)", "A1+B1"],
+    correct: 1,
+    explanation: "No Excel, toda fórmula começa com '='. Para somar A1 e B1, usamos =A1+B1. Também funciona =SOMA(A1:B1) ou =SUM(A1:B1)."
+  },
+  {
+    id: 27, category: "Tecnologia", subcategory: "Excel Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "facil", type: "multipla",
+    text: "No Excel, qual função é usada para calcular a MÉDIA de um conjunto de valores?",
+    options: ["=MEDIA()", "=AVERAGE()", "=MEAN()", "=MED()"],
+    correct: 0,
+    explanation: "Em Excel em português, a função é =MÉDIA(). Em inglês seria =AVERAGE(). Ela soma todos os valores e divide pela quantidade."
+  },
+  {
+    id: 28, category: "Tecnologia", subcategory: "Excel Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "facil", type: "verdadeiro_falso",
+    text: "No Excel, para selecionar várias células ao mesmo tempo (não contínuas), você deve segurar a tecla Ctrl enquanto clica nelas.",
+    correct: true,
+    explanation: "Verdadeiro! Segurando Ctrl você seleciona múltiplas células individuais. Para selecionar um intervalo contínuo, use Shift."
+  },
+  {
+    id: 29, category: "Tecnologia", subcategory: "PowerPoint Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "No PowerPoint, como se chama cada página individual de uma apresentação?",
+    options: ["Página", "Folha", "Slide", "Frame"],
+    correct: 2,
+    explanation: "Cada tela de uma apresentação no PowerPoint chama-se 'slide'. Uma apresentação pode ter vários slides, e você pode navegar entre eles durante a exibição."
+  },
+  {
+    id: 30, category: "Tecnologia", subcategory: "Informática Básica",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "O que significa a sigla 'URL'?",
+    options: ["Universal Reading Language", "Uniform Resource Locator", "User Registration Link", "Universal Reference Line"],
+    correct: 1,
+    explanation: "URL significa 'Uniform Resource Locator' — é o endereço de uma página na internet, como https://www.google.com."
+  },
+  {
+    id: 31, category: "Tecnologia", subcategory: "Segurança Digital",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "facil", type: "multipla",
+    text: "Qual das práticas a seguir é MAIS recomendada para criar uma senha segura?",
+    options: ["Usar seu nome e data de nascimento", "Usar a mesma senha em todos os sites", "Misturar letras maiúsculas, minúsculas, números e símbolos", "Usar uma senha curta e fácil de lembrar"],
+    correct: 2,
+    explanation: "Senhas fortes combinam letras maiúsculas e minúsculas, números e símbolos. Evite dados pessoais e nunca use a mesma senha em vários sites."
+  },
+  {
+    id: 32, category: "Tecnologia", subcategory: "Internet",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "verdadeiro_falso",
+    text: "Phishing é um tipo de golpe online em que criminosos se passam por empresas legítimas para roubar seus dados.",
+    correct: true,
+    explanation: "Verdadeiro! Phishing ('pescaria' em inglês) é quando golpistas enviam e-mails ou mensagens falsas fingindo ser bancos, lojas ou serviços para enganar e roubar dados."
+  },
+  {
+    id: 33, category: "Tecnologia", subcategory: "Excel Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "medio", type: "multipla",
+    text: "No Excel, a função =SE(A1>10; \"Alto\"; \"Baixo\") vai retornar:",
+    options: ["\"Alto\" sempre", "\"Baixo\" sempre", "\"Alto\" se A1 for maior que 10, senão \"Baixo\"", "Um erro, pois a sintaxe está errada"],
+    correct: 2,
+    explanation: "A função SE verifica uma condição: se A1>10, retorna 'Alto'; caso contrário, retorna 'Baixo'. Sintaxe: =SE(condição; valor_se_verdadeiro; valor_se_falso)."
+  },
+
+  // ===== CONHECIMENTOS GERAIS / LÓGICA =====
+  {
+    id: 34, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Se todos os gatos têm 4 patas, e Bolinha é um gato, então Bolinha tem:",
+    options: ["2 patas", "3 patas", "4 patas", "Não é possível saber"],
+    correct: 2,
+    explanation: "Raciocínio lógico por dedução: premissa 1: todos os gatos têm 4 patas; premissa 2: Bolinha é gato; conclusão: Bolinha tem 4 patas."
+  },
+  {
+    id: 35, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Qual número vem a seguir na sequência: 2, 4, 8, 16, ___?",
+    options: ["20", "24", "32", "30"],
+    correct: 2,
+    explanation: "A sequência dobra a cada número: 2×2=4, 4×2=8, 8×2=16, 16×2=32. É uma progressão geométrica com razão 2."
+  },
+  {
+    id: 36, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "facil", type: "multipla",
+    text: "Complete a sequência: 1, 1, 2, 3, 5, 8, ___",
+    options: ["10", "11", "13", "15"],
+    correct: 2,
+    explanation: "É a Sequência de Fibonacci! Cada número é a soma dos dois anteriores: 5+8=13. Essa sequência aparece muito na natureza."
+  },
+  {
+    id: 37, category: "Conhecimentos Gerais", subcategory: "Habilidades Escolares",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é a técnica mais eficaz para memorizar conteúdos de estudo?",
+    options: ["Ler uma única vez e esperar lembrar", "Estudar tudo de uma vez na véspera da prova", "Revisar o conteúdo em intervalos regulares ao longo do tempo", "Copiar o texto várias vezes"],
+    correct: 2,
+    explanation: "A revisão espaçada é comprovada pela ciência: revisar o conteúdo em dias diferentes (ex.: 1 dia, 3 dias, 7 dias depois) é muito mais eficaz que estudar tudo de uma vez."
+  },
+  {
+    id: 38, category: "Conhecimentos Gerais", subcategory: "Habilidades Escolares",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "verdadeiro_falso",
+    text: "Fazer pausas regulares durante o estudo (como a técnica Pomodoro) ajuda na concentração e no aprendizado.",
+    correct: true,
+    explanation: "Verdadeiro! A técnica Pomodoro (25 min estudo + 5 min pausa) é eficaz porque o cérebro mantém foco por períodos limitados. Pausas ajudam a consolidar a memória."
+  },
+  {
+    id: 39, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "facil", type: "multipla",
+    text: "Se A é maior que B, e B é maior que C, então:",
+    options: ["C é maior que A", "A é maior que C", "B é o maior de todos", "Não é possível comparar A e C"],
+    correct: 1,
+    explanation: "Pela propriedade transitiva: A > B e B > C, logo A > C. Essa é uma relação de ordem transitiva, usada em matemática e lógica."
+  },
+  {
+    id: 40, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "medio", type: "multipla",
+    text: "Uma sala tem 20 alunos. 12 gostam de matemática, 10 gostam de português e 5 gostam de ambas. Quantos não gostam de nenhuma?",
+    options: ["0", "3", "5", "7"],
+    correct: 1,
+    explanation: "Usando o princípio da inclusão-exclusão: 12+10−5=17 gostam de pelo menos uma. Logo 20−17=3 não gostam de nenhuma."
+  },
+  {
+    id: 41, category: "Conhecimentos Gerais", subcategory: "Cultura Geral",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é a capital do Brasil?",
+    options: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+    correct: 2,
+    explanation: "Brasília é a capital federal do Brasil desde 1960, quando substituiu o Rio de Janeiro. Foi planejada e construída especialmente para ser a capital."
+  },
+  {
+    id: 42, category: "Conhecimentos Gerais", subcategory: "Cultura Geral",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Quantos estados tem o Brasil?",
+    options: ["24", "26", "27", "28"],
+    correct: 1,
+    explanation: "O Brasil tem 26 estados mais o Distrito Federal (Brasília). No total são 27 unidades federativas, mas os ESTADOS são 26."
+  },
+  {
+    id: 43, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "facil", type: "multipla",
+    text: "Qual figura NÃO pertence ao grupo: triângulo, quadrado, círculo, cubo?",
+    options: ["Triângulo", "Quadrado", "Círculo", "Cubo"],
+    correct: 3,
+    explanation: "Cubo é uma figura tridimensional (3D), enquanto triângulo, quadrado e círculo são figuras planas (2D). O cubo não pertence ao grupo."
+  },
+
+  // Mais questões de Matemática
+  {
+    id: 44, category: "Matemática", subcategory: "Frações",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "medio", type: "multipla",
+    text: "Qual é o resultado de 2/3 × 3/4?",
+    options: ["5/7", "6/12", "1/2", "2/4"],
+    correct: 2,
+    explanation: "Para multiplicar frações: numerador × numerador e denominador × denominador. 2×3=6, 3×4=12. Resultado: 6/12 = 1/2 (simplificado)."
+  },
+  {
+    id: 45, category: "Matemática", subcategory: "Porcentagem",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "medio", type: "multipla",
+    text: "Se um produto estava custando R$ 200 e teve aumento de 25%, qual é o novo preço?",
+    options: ["R$ 220,00", "R$ 225,00", "R$ 250,00", "R$ 240,00"],
+    correct: 2,
+    explanation: "25% de R$ 200 = R$ 50. Novo preço = R$ 200 + R$ 50 = R$ 250. Ou diretamente: R$ 200 × 1,25 = R$ 250."
+  },
+
+  // Mais Português
+  {
+    id: 46, category: "Português", subcategory: "Sinonímia",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "basico", type: "multipla",
+    text: "Qual palavra é sinônimo de VELOZ?",
+    options: ["Lento", "Rápido", "Grande", "Forte"],
+    correct: 1,
+    explanation: "Sinônimo é uma palavra com significado igual ou muito parecido. 'Rápido' e 'veloz' têm o mesmo significado: que se move com muita velocidade."
+  },
+  {
+    id: 47, category: "Português", subcategory: "Acentuação",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "facil", type: "verdadeiro_falso",
+    text: "A palavra 'café' é uma palavra oxítona (acento na última sílaba).",
+    correct: true,
+    explanation: "Verdadeiro! 'Ca-FÉ' tem acento na última sílaba, por isso é oxítona. Oxítonas terminadas em a(s), e(s), o(s), em, ens são acentuadas."
+  },
+  {
+    id: 48, category: "Português", subcategory: "Classes Gramaticais",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "facil", type: "multipla",
+    text: "Na frase \"Ela canta muito bem\", a palavra \"muito\" classifica-se como:",
+    options: ["Adjetivo", "Substantivo", "Advérbio", "Pronome"],
+    correct: 2,
+    explanation: "\"Muito\" é um advérbio de intensidade — ele modifica o advérbio \"bem\". Advérbios modificam verbos, adjetivos ou outros advérbios."
+  },
+
+  // Mais Tecnologia
+  {
+    id: 49, category: "Tecnologia", subcategory: "Informática Básica",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "O que é um 'cursor' no computador?",
+    options: ["O teclado do computador", "O ponteiro que aparece na tela e é controlado pelo mouse", "A tela do computador", "O processador"],
+    correct: 1,
+    explanation: "O cursor (ou ponteiro) é o indicador visual na tela que se move conforme você move o mouse. Ele permite clicar em elementos da interface."
+  },
+  {
+    id: 50, category: "Tecnologia", subcategory: "PowerPoint Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "facil", type: "verdadeiro_falso",
+    text: "No PowerPoint, é possível inserir imagens, vídeos e gráficos nos slides.",
+    correct: true,
+    explanation: "Verdadeiro! O PowerPoint permite inserir vídeos, imagens, gráficos, tabelas, formas, ícones e muito mais. Acesse pelo menu 'Inserir'."
+  },
+  {
+    id: 51, category: "Matemática", subcategory: "Problemas",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "medio", type: "multipla",
+    text: "Uma torneira enche um tanque em 4 horas. Quanto do tanque estará cheio após 1 hora e 30 minutos?",
+    options: ["25%", "37,5%", "50%", "30%"],
+    correct: 1,
+    explanation: "Em 4h enche 100%. Em 1h enche 25%. Em 30min (0,5h) enche 12,5%. Total: 25% + 12,5% = 37,5%."
+  },
+  {
+    id: 52, category: "Conhecimentos Gerais", subcategory: "Lógica",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "medio", type: "multipla",
+    text: "Ana é mais nova que Bia. Bia tem a mesma idade que Carlos. Dani é mais velha que Carlos. Quem é a mais jovem?",
+    options: ["Bia", "Carlos", "Ana", "Dani"],
+    correct: 2,
+    explanation: "Ordenando: Dani > Bia = Carlos > Ana. Ana é a mais nova (jovem) entre todos."
+  },
+  {
+    id: 53, category: "Português", subcategory: "Interpretação de Texto",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "medio", type: "multipla",
+    context: "\"A poluição dos oceanos é um problema global crescente. Milhões de toneladas de plástico são despejadas nos mares todos os anos, afetando a vida marinha e chegando à nossa alimentação por meio dos frutos do mar.\"",
+    text: "Qual afirmação NÃO está de acordo com o texto?",
+    options: [
+      "A poluição dos oceanos é um problema global",
+      "O plástico nos oceanos pode afetar a alimentação humana",
+      "A poluição marinha diminuiu nos últimos anos",
+      "Frutos do mar podem estar contaminados com plástico"
+    ],
+    correct: 2,
+    explanation: "O texto afirma que a poluição é um problema 'crescente', nunca dizendo que diminuiu. As demais afirmações estão no texto."
+  },
+  {
+    id: 54, category: "Tecnologia", subcategory: "Excel Básico",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "No Excel, o que é uma 'planilha' (aba)?",
+    options: [
+      "É o arquivo inteiro do Excel",
+      "É uma célula individual",
+      "É uma das folhas dentro de um arquivo Excel, identificada por uma aba na parte inferior",
+      "É um gráfico criado no Excel"
+    ],
+    correct: 2,
+    explanation: "Uma planilha (aba) é uma folha dentro do arquivo Excel. Um arquivo Excel (pasta de trabalho) pode conter várias planilhas, identificadas pelas abas na parte inferior."
+  },
+  {
+    id: 55, category: "Matemática", subcategory: "Geometria",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "facil", type: "multipla",
+    text: "Quantos graus tem um ângulo reto?",
+    options: ["45°", "60°", "90°", "180°"],
+    correct: 2,
+    explanation: "Um ângulo reto mede 90°. Ele forma um 'L' perfeito. Ângulo agudo < 90°, ângulo reto = 90°, ângulo obtuso entre 90° e 180°."
+  },
+  {
+    id: 56, category: "Conhecimentos Gerais", subcategory: "Ciências",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Qual é o planeta mais próximo do Sol no sistema solar?",
+    options: ["Vênus", "Terra", "Mercúrio", "Marte"],
+    correct: 2,
+    explanation: "Mercúrio é o planeta mais próximo do Sol. A ordem é: Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano, Netuno."
+  },
+  {
+    id: 57, category: "Português", subcategory: "Ortografia",
+    icon: "📖", colorClass: "pill-blue",
+    difficulty: "medio", type: "multipla",
+    text: "Assinale a alternativa em que TODAS as palavras estão escritas corretamente:",
+    options: [
+      "Beneficiência, frequência, eficiência",
+      "Benificência, frequência, eficiência",
+      "Beneficência, frequência, eficiência",
+      "Beneficência, frenquência, eficiência"
+    ],
+    correct: 2,
+    explanation: "Correto: Beneficência (não beneficiência), frequência (com qu), eficiência (com ci). Todas as três com cedilha (ç) no final."
+  },
+  {
+    id: 58, category: "Matemática", subcategory: "Números",
+    icon: "🔢", colorClass: "pill-coral",
+    difficulty: "basico", type: "verdadeiro_falso",
+    text: "O número zero (0) é considerado um número par.",
+    correct: true,
+    explanation: "Verdadeiro! Zero é par porque é divisível por 2 sem resto (0 ÷ 2 = 0). Números pares são: ...-4, -2, 0, 2, 4, 6..."
+  },
+  {
+    id: 59, category: "Tecnologia", subcategory: "Informática Básica",
+    icon: "💻", colorClass: "pill-green",
+    difficulty: "basico", type: "multipla",
+    text: "Qual atalho de teclado é usado para COPIAR um texto ou arquivo selecionado?",
+    options: ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + Z"],
+    correct: 1,
+    explanation: "Ctrl+C = Copiar | Ctrl+X = Recortar | Ctrl+V = Colar | Ctrl+Z = Desfazer. São atalhos universais em praticamente todos os programas."
+  },
+  {
+    id: 60, category: "Conhecimentos Gerais", subcategory: "Habilidades Escolares",
+    icon: "🧩", colorClass: "pill-purple",
+    difficulty: "basico", type: "multipla",
+    text: "Qual das opções é um exemplo de fonte confiável para pesquisa escolar?",
+    options: [
+      "Qualquer site encontrado no Google",
+      "Um post de um desconhecido nas redes sociais",
+      "Sites especializados, enciclopédias, universidades ou instituições de ensino e órgãos governamentais",
+      "Utilização de IAs sem verificar a fonte"
+    ],
+    correct: 2,
+    explanation: "Fontes confiáveis incluem enciclopédias (como Britannica), sites de universidades (.edu, .ac), portais governamentais (.gov)."
+  },
+];
+
+// ==================== SUBJECTS META ====================
+const subjectsMeta = [
+  { id: "portugues", name: "Português", icon: "📖", cat: "Português", colorClass: "cat-portugues",
+    subcats: ["Classes Gramaticais", "Transitividade Verbal", "Ortografia", "Interpretação de Texto", "Pontuação", "Sinonímia", "Acentuação"] },
+  { id: "matematica", name: "Matemática", icon: "🔢", cat: "Matemática", colorClass: "cat-matematica",
+    subcats: ["Operações Básicas", "Multiplicação", "Divisão", "Frações", "Porcentagem", "Problemas", "Geometria", "Números"] },
+  { id: "tecnologia", name: "Tecnologia", icon: "💻", cat: "Tecnologia", colorClass: "cat-tecnologia",
+    subcats: ["Informática Básica", "Excel Básico", "PowerPoint Básico", "Segurança Digital", "Internet"] },
+  { id: "geral", name: "Conhecimentos Gerais", icon: "🧩", cat: "Conhecimentos Gerais", colorClass: "cat-geral",
+    subcats: ["Lógica", "Habilidades Escolares", "Cultura Geral", "Ciências"] },
+];
+
+// ==================== APP STATE ====================
+let state = {
+  selectedSubjects: [],
+  selectedMode: 'practice',
+  selectedDiff: 'todos',
+  sessionQuestions: [],
+  currentIdx: 0,
+  answers: [],
+  score: 0,
+  answered: false,
+  selectedOption: null,
+  shortAnswerValue: '',
+  isChallenge: false,
+};
+
+// ==================== NAVIGATION ====================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function goHome() { showScreen('screen-home'); }
+
+function goToSelect() {
+  state.selectedSubjects = [];
+  state.selectedMode = 'practice';
+  state.selectedDiff = 'todos';
+  state.isChallenge = false;
+  renderSubjectsGrid();
+  setModeUI('practice');
+  setDiffUI('todos');
+  showScreen('screen-select');
+}
+
+// ==================== RENDER SUBJECTS ====================
+function renderSubjectsGrid() {
+  const grid = document.getElementById('subjects-grid');
+  grid.innerHTML = '';
+  subjectsMeta.forEach(s => {
+    const count = questionsDB.filter(q => q.category === s.cat).length;
+    const div = document.createElement('div');
+    div.className = `subject-card ${s.colorClass}`;
+    div.id = `subj-${s.id}`;
+    div.onclick = () => toggleSubject(s.id);
+    div.innerHTML = `
+      <span class="subject-icon">${s.icon}</span>
+      <div class="subject-name">${s.name}</div>
+      <div class="subject-count">${count} questões</div>
+      <div class="subject-check">✓</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function toggleSubject(id) {
+  const idx = state.selectedSubjects.indexOf(id);
+  if (idx === -1) state.selectedSubjects.push(id);
+  else state.selectedSubjects.splice(idx, 1);
+  updateSubjectUI();
+}
+
+function updateSubjectUI() {
+  subjectsMeta.forEach(s => {
+    const card = document.getElementById(`subj-${s.id}`);
+    if (!card) return;
+    if (state.selectedSubjects.includes(s.id)) card.classList.add('selected');
+    else card.classList.remove('selected');
+  });
+}
+
+function selectAllSubjects() {
+  state.selectedSubjects = subjectsMeta.map(s => s.id);
+  updateSubjectUI();
+}
+
+// ==================== MODE & DIFF ====================
+function selectMode(m) {
+  state.selectedMode = m;
+  setModeUI(m);
+}
+function setModeUI(m) {
+  ['practice', 'challenge'].forEach(id => {
+    const el = document.getElementById(`mode-${id}`);
+    if (el) el.classList.toggle('selected', id === m);
+  });
+}
+
+function selectDiff(d) {
+  state.selectedDiff = d;
+  setDiffUI(d);
+}
+function setDiffUI(d) {
+  ['basico', 'facil', 'medio', 'todos'].forEach(id => {
+    const el = document.getElementById(`diff-${id}`);
+    if (el) el.classList.toggle('selected', id === d);
+  });
+}
+
+// ==================== START SESSION ====================
+function startSession() {
+  if (state.selectedSubjects.length === 0) {
+    selectAllSubjects();
+  }
+  const cats = subjectsMeta.filter(s => state.selectedSubjects.includes(s.id)).map(s => s.cat);
+  let pool = questionsDB.filter(q => cats.includes(q.category));
+  if (state.selectedDiff !== 'todos') pool = pool.filter(q => q.difficulty === state.selectedDiff);
+  if (pool.length === 0) { alert('Nenhuma questão encontrada com esses filtros. Tente outros.'); return; }
+
+  pool = shuffle([...pool]);
+  const limit = state.selectedMode === 'challenge' ? Math.min(10, pool.length) : Math.min(15, pool.length);
+  state.sessionQuestions = pool.slice(0, limit);
+  state.isChallenge = state.selectedMode === 'challenge';
+  beginSession();
+}
+
+function startChallenge() {
+  state.selectedSubjects = subjectsMeta.map(s => s.id);
+  state.selectedMode = 'challenge';
+  state.selectedDiff = 'todos';
+  state.isChallenge = true;
+  const pool = shuffle([...questionsDB]);
+  state.sessionQuestions = pool.slice(0, 10);
+  beginSession();
+}
+
+function beginSession() {
+  state.currentIdx = 0;
+  state.answers = [];
+  state.score = 0;
+  document.getElementById('score-display').textContent = '0';
+  showScreen('screen-question');
+  renderQuestion();
+}
+
+// ==================== RENDER QUESTION ====================
+function renderQuestion() {
+  state.answered = false;
+  state.selectedOption = null;
+  state.shortAnswerValue = '';
+
+  const q = state.sessionQuestions[state.currentIdx];
+  const total = state.sessionQuestions.length;
+  const pct = (state.currentIdx / total) * 100;
+
+  // Header
+  document.getElementById('q-num-label').textContent = `Questão ${state.currentIdx + 1} de ${total}`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  // Category pill
+  const qPill = document.getElementById('q-pill');
+  qPill.textContent = q.icon + ' ' + q.category;
+  qPill.className = 'pill ' + q.colorClass;
+
+  const diffLabels = { basico: '🌱 Básico', facil: '⭐ Fácil', medio: '🔥 Médio' };
+  document.getElementById('diff-pill').textContent = diffLabels[q.difficulty] || '';
+
+  // Category line
+  document.getElementById('q-category').textContent = `${q.icon} ${q.category} — ${q.subcategory}`;
+
+  // Context
+  const ctxEl = document.getElementById('q-context');
+  if (q.context) { ctxEl.textContent = q.context; ctxEl.classList.remove('hidden'); }
+  else ctxEl.classList.add('hidden');
+
+  // Question text
+  document.getElementById('q-text').innerHTML = q.text;
+
+  // Challenge banner
+  const banner = document.getElementById('challenge-banner');
+  if (state.isChallenge) {
+    banner.classList.remove('hidden');
+    document.getElementById('challenge-count').textContent = `${state.currentIdx + 1}/10`;
+  } else {
+    banner.classList.add('hidden');
+  }
+
+  // Options
+  renderOptions(q);
+
+  // Feedback clear
+  const fb = document.getElementById('q-feedback');
+  fb.className = 'hidden';
+  fb.innerHTML = '';
+
+  // Buttons
+  document.getElementById('btn-answer').classList.remove('hidden');
+  document.getElementById('btn-next').classList.add('hidden');
+}
+
+function renderOptions(q) {
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+
+  if (q.type === 'multipla') {
+    const letters = ['A', 'B', 'C', 'D', 'E'];
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
+      btn.onclick = () => selectOption(i);
+      container.appendChild(btn);
+    });
+  } else if (q.type === 'verdadeiro_falso') {
+    const row = document.createElement('div');
+    row.className = 'tf-row';
+    [{ val: true, emoji: '✅', label: 'Verdadeiro' }, { val: false, emoji: '❌', label: 'Falso' }].forEach(item => {
+      const btn = document.createElement('button');
+      btn.className = 'tf-btn';
+      btn.innerHTML = `${item.emoji}<span class="tf-label">${item.label}</span>`;
+      btn.onclick = () => selectTF(item.val, btn);
+      btn.dataset.val = item.val;
+      row.appendChild(btn);
+    });
+    container.appendChild(row);
+  }
+}
+
+function selectOption(i) {
+  if (state.answered) return;
+  state.selectedOption = i;
+  document.querySelectorAll('.option-btn').forEach((b, idx) => {
+    b.classList.toggle('selected', idx === i);
+  });
+}
+
+function selectTF(val, btn) {
+  if (state.answered) return;
+  state.selectedOption = val;
+  document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+// ==================== ANSWER ====================
+function confirmAnswer() {
+  if (state.answered) return;
+  if (state.selectedOption === null && state.selectedOption !== false) {
+    shake(document.getElementById('question-card'));
+    return;
+  }
+  state.answered = true;
+  const q = state.sessionQuestions[state.currentIdx];
+  let isCorrect = false;
+
+  if (q.type === 'multipla') {
+    isCorrect = state.selectedOption === q.correct;
+  } else if (q.type === 'verdadeiro_falso') {
+    isCorrect = state.selectedOption === q.correct;
+  }
+
+  state.answers.push({ q, isCorrect, selected: state.selectedOption });
+  if (isCorrect) {
+    const pts = { basico: 5, facil: 8, medio: 12 }[q.difficulty] || 5;
+    state.score += pts;
+    document.getElementById('score-display').textContent = state.score;
+  }
+
+  // Highlight options
+  highlightAnswers(q, isCorrect);
+
+  // Feedback
+  showFeedback(q, isCorrect);
+
+  // Buttons
+  document.getElementById('btn-answer').classList.add('hidden');
+  const btnNext = document.getElementById('btn-next');
+  btnNext.classList.remove('hidden');
+  const isLast = state.currentIdx === state.sessionQuestions.length - 1;
+  btnNext.textContent = isLast ? '📊 Ver resultado' : 'Próxima →';
+}
+
+function highlightAnswers(q, isCorrect) {
+  if (q.type === 'multipla') {
+    document.querySelectorAll('.option-btn').forEach((b, i) => {
+      b.disabled = true;
+      if (i === q.correct) b.classList.add('correct');
+      else if (i === state.selectedOption && !isCorrect) b.classList.add('wrong');
+    });
+  } else if (q.type === 'verdadeiro_falso') {
+    document.querySelectorAll('.tf-btn').forEach(b => {
+      b.disabled = true;
+      const bVal = b.dataset.val === 'true';
+      if (bVal === q.correct) b.classList.add('correct');
+      else if (bVal === state.selectedOption && !isCorrect) b.classList.add('wrong');
+    });
+  }
+}
+
+function showFeedback(q, isCorrect) {
+  const fb = document.getElementById('q-feedback');
+  fb.className = `feedback-box ${isCorrect ? 'correct' : 'wrong'}`;
+  fb.innerHTML = `
+    <div class="feedback-icon">${isCorrect ? '🎉' : '💡'}</div>
+    <div class="feedback-content">
+      <strong>${isCorrect ? '✅ Correto! Muito bem!' : '❌ Resposta incorreta'}</strong>
+      <p>${q.explanation}</p>
+    </div>
+  `;
+}
+
+// ==================== NEXT QUESTION ====================
+function nextQuestion() {
+  state.currentIdx++;
+  if (state.currentIdx >= state.sessionQuestions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ==================== RESULTS ====================
+function showResults() {
+  const total = state.sessionQuestions.length;
+  const acertos = state.answers.filter(a => a.isCorrect).length;
+  const erros = total - acertos;
+  const pct = Math.round((acertos / total) * 100);
+
+  document.getElementById('result-score').textContent = `${acertos}/${total}`;
+  document.getElementById('result-pct').textContent = `${pct}% de aproveitamento`;
+  document.getElementById('r-acertos').textContent = acertos;
+  document.getElementById('r-erros').textContent = erros;
+  document.getElementById('r-pontos').textContent = state.score;
+
+  // Emoji & title
+  let emoji, title;
+  if (pct === 100) { emoji = '🏆'; title = 'Perfeito! Incrível!'; }
+  else if (pct >= 80) { emoji = '🎉'; title = 'Parabéns! Ótimo resultado!'; }
+  else if (pct >= 60) { emoji = '😊'; title = 'Bom trabalho!'; }
+  else if (pct >= 40) { emoji = '📚'; title = 'Continue praticando!'; }
+  else { emoji = '💪'; title = 'Não desista, tente de novo!'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+
+  // Review list
+  const reviewList = document.getElementById('review-list');
+  reviewList.innerHTML = '';
+  state.answers.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = `review-item ${a.isCorrect ? 'ok' : 'nok'}`;
+    const shortQ = a.q.text.replace(/<[^>]+>/g, '').substring(0, 60) + (a.q.text.length > 60 ? '…' : '');
+    div.innerHTML = `
+      <span class="review-item-icon">${a.isCorrect ? '✅' : '❌'}</span>
+      <span class="review-item-text"><strong>Q${i + 1}:</strong> ${shortQ}</span>
+    `;
+    reviewList.appendChild(div);
+  });
+
+  // Progress bar color in results header
+  const bg = pct >= 80 ? 'linear-gradient(135deg, #00C08B, #00A077)' : pct >= 60 ? 'linear-gradient(135deg, #1B4FD8, #3B6BFF)' : 'linear-gradient(135deg, #FF5C35, #FF8A65)';
+  document.querySelector('.results-header').style.background = bg;
+
+  showScreen('screen-results');
+}
+
+// ==================== UTILS ====================
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function shake(el) {
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = 'shake 0.4s ease';
+}
+
+// Add shake animation
+const style = document.createElement('style');
+style.textContent = `
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+  90% { transform: translateX(3px); }
+}`;
+document.head.appendChild(style);
+
+// ==================== INIT ====================
+renderSubjectsGrid();
+</script>
+</body>
+</html>
